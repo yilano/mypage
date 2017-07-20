@@ -1,0 +1,1729 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>斗地主</title>
+	<!-- 加载JQ -->
+<script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+}
+li{
+	list-style: none;
+}
+.zz{ 
+    position: absolute;
+    left: 20%;
+}
+.left{
+	width:20%;
+	height: 800px;
+	float: left;
+           
+}
+.left .qdz {
+	margin:350px 0 0 0;
+	text-align: center;
+}
+.left .clock {
+	width: 54px;
+	height: 54px;
+	line-height: 36.5px;
+	text-align: center;
+	font-size: 17px;
+	display: none;
+	 font-family: "微软雅黑",Hiragino Sans GB;
+	 background:url('./images/gototop_btn.png')center no-repeat;
+	color:#fff;
+	margin:0px 0px 0px 260px;
+	padding:16px 0px 0px 0px;
+	
+}
+.left .but{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	margin: 300px 0 0 0;
+	text-align: center;
+	display: none;
+}
+.mid{
+	width:60%;
+	height: 800px;
+	float: left;
+	
+}
+.mid_top{
+	width: 100%;
+	height: 500px;
+	float: left;
+	perspective:500px;
+	perspective-origin: 50% -35%;
+	position:relative;
+}
+.mid_top img{
+	position: absolute;
+	z-index:100;
+	border:none;
+	margin:-287px 0px 0px 180px;
+}
+.mid_end{
+	width: 100%;
+	height: 300px;
+	float: left;
+	
+	background:rgba(10,10,5,0.6);
+}
+.mid_end .clock {
+	width: 54px;
+	height: 54px;
+	line-height: 36.5px;
+	text-align: center;
+	font-size: 17px;
+	display: none;
+	background:url('./images/gototop_btn.png')center no-repeat;
+	 font-family: "微软雅黑",Hiragino Sans GB;
+	color:#fff;
+	margin:-200px 0px 0px 140px;
+	padding:16px 0px 0px 0px;
+	
+}
+.mid .qdz {
+	margin: 30px 0 0 0;
+	text-align: center;
+}
+.mid .but{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	margin:150px 0 0 0;
+	text-align: center;
+	display: none;
+}
+.right{
+	width:20%;
+	height: 800px;
+	float: right;
+	 
+}
+.right .qdz {
+	margin: 400px 0 0 0;
+	text-align: center;
+}
+.right .clock {
+	width: 54px;
+	height: 54px;
+	line-height: 36.5px;
+	text-align: center;
+	font-size: 17px;
+	display: none;
+	background:url('./images/gototop_btn.png')center no-repeat;
+	 font-family: "微软雅黑",Hiragino Sans GB;
+	color:#fff;
+	margin:0px 115px 0px 0px ;
+	padding:16px 0px 0px 0px;
+	
+}
+.right .but{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin:300px 0px 0px 0px ;
+	display: none;
+}
+.all_poker{
+	width: 125px;
+	height: 175px;
+	margin: 100px auto 0px;
+	position: relative;
+	transform-style: preserve-3d;
+
+}
+.all_poker li{
+	transform-origin:50% 80%;
+	position: absolute;
+}
+.temp_poker{
+	width: 125px;
+	height: 175px;
+	margin: 65px auto 0px;
+	position: relative;
+}
+.back {
+	width:125px;
+	height: 175px;
+	background: url('./images/14.png') -87px -225px;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1);
+	position: absolute;
+	z-index: 100;
+}
+.play_1{
+	width:125px;
+	height: 175px;
+	margin: 20px auto 0px;
+	position: relative;
+}
+.play_1 li{
+	position: absolute;
+}
+.play_2{
+	width:125px;
+	height: 175px;
+	margin: -40px auto 0px auto;
+	position: relative;
+}
+.play_2 li{
+	position: absolute;
+}
+.play_3{
+	width:125px;
+	height: 175px;
+	margin: 20px auto 0px;
+	position: relative;
+}
+.play_3 li{
+	position: absolute;
+}
+.qdz {
+	display: none;
+}
+.qdz .anniu{
+	color: #faddde;
+	border: solid 1px #980c10;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top, #ed1c24, #aa1317);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317'); 
+}
+.qdz .anniu:hover{
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top, #c9151b, #a11115);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115'); 
+}
+.qdz .anniu:active{
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top, #aa1317, #ed1c24);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24'); 
+}
+.left .select{
+	top:20px;
+}
+
+.right .select{
+	top:-20px;
+}
+
+.mid_end .select{
+	top:-20px;
+}
+.now_poker{
+	width: 125px;
+	height: 175px;
+	margin: 20px auto;
+	position: relative;
+}
+.now_poker li{
+	position: absolute;
+}
+
+.mingchen{
+	width: 124px;
+	height: 47px;
+	margin:15px 0 0 5px;
+	padding:8px 0 0 0;
+	display: none;
+}
+.play{
+	color: #faddde;
+	border: solid 1px #980c10;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top, #ed1c24, #aa1317);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317'); 
+}
+.play:hover{
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top, #c9151b, #a11115);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115'); 
+}
+.play:active{
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top, #aa1317, #ed1c24);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24'); 
+}
+.pass{
+	color: #faddde;
+	border: solid 1px #980c10;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top, #ed1c24, #aa1317);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317'); 
+}
+.pass:hover{
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top, #c9151b, #a11115);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115'); 
+}
+.pass:active{
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top, #aa1317, #ed1c24);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24'); 
+} 
+#xipai{
+	width:124px;
+	height:47px;
+	position: absolute;
+	left: 47%;
+	top: 62%;
+	z-index: 10000;
+	border:none;
+
+	display: block;
+	background-image: url(./images/xipai.png);
+	z-index: 10000;
+}
+#fapai{
+	width:124px;
+	height:47px;
+	position: absolute;
+	left: 47%;
+	top: 62%;
+	z-index: 10000;
+	border:none;
+	background-image: url(./images/fapai.png);
+	display: none;
+	z-index: 10000;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+	var all_poker = Array('14_0', '14_1');
+	for(var i=1; i<=13;i++){
+		for(var j=0; j<=3; j++){
+			all_poker.push(i+'_'+j);
+		}
+	}
+
+	var play_1 = Array();
+	var play_2 = Array();
+	var play_3 = Array();
+	var boss = null;
+
+	for(var i = 0; i<54; i++){
+		$('.mid_top .all_poker').append('<li class="back"></li>');
+		$('.all_poker li:last').css({
+			top:'-'+i+'px',
+                                      
+			// left:(i/2)+'px'
+		});
+                         
+	}
+
+	var click = 0;
+
+	/*$('body').on('click', '.all_poker li', function(){
+		if (click == 0) {
+			click++;
+			clearPoker();		
+			all_poker = all_poker.sort(function(x, y){
+				return Math.random() - 0.5;
+			});
+		}else if(click >= 1){
+			start();
+			$('#music').attr('src', '05 - 熱き決闘者たち.mp3'); //开启背景音乐
+			setTimeout(function(){ boss = qiandizhu()},2000);
+		}
+	});*/
+	$('body').on('click','#xipai',function(){
+		document.getElementById('xipai').style.display = 'none';
+		document.getElementById("fapai").style.display = 'none';
+		// clearPoker();
+		all_poker = all_poker.sort(function(x, y){
+			return Math.random() - 0.5;
+		});
+		setTimeout(function(){
+			document.getElementById('xipai').style.display = 'none';
+			document.getElementById("fapai").style.display = 'block';
+		},10)
+	});
+	$("body").on('click','#fapai',function(){
+		document.getElementById('xipai').style.display = 'none';
+		document.getElementById("fapai").style.display = 'none';
+		start();
+		$('#music').attr('src', '05 - 熱き決闘者たち.mp3'); //开启背景音乐
+		setTimeout(function(){ boss = qiandizhu()},2000);
+		
+	});
+
+	function clearPoker(){
+		var poker_html = $('.mid_top').html();
+		//$('.mid_top ul').remove();
+
+		/*for(var j=0; j<3; j++){
+			var ul = '';
+			ul += '<ul class="all_poker" style="top:-'+(275*j)+'px">';
+			for(var i=0; i<18; i++){
+				ul += '<li class="back" style="top:-'+i+'px"></li>'
+			}
+			ul += '</ul>';
+			$('.mid_top').append(ul);
+		}*/
+		
+		/*for(var i=0; i<3; i++){
+			$('.all_poker').eq(0).animate({left:'-300px'},250).animate({left:'0px'},250);
+			$('.all_poker').eq(1).animate({left:'300px'},250).animate({left:'0px'},250);
+		}*/
+		var right = setInterval(function(){//右边拉开
+			for(var i=0;i<54;i+=2){
+				$('.all_poker li').eq(i).css({'transform':'translateX('+i*5+'px) translateY('+i*5+'px) translateZ('+i*5+'px)','transition-duration':'0.3s'});
+				$('#ximusic').attr('src', '06.mp3');
+				
+			}
+			setTimeout(function(){
+				var rb = setInterval(function(){//下去
+					for(var i=0;i<54;i+=2){
+						$('.all_poker li').eq(i).css({'transform':'translateX(-'+i*5+'px) translateY(-'+i*1+'px) translateZ(-'+i*5+'px)','transition-duration':'0.3s'});
+					}
+					clearInterval(rb);
+				},300);
+				
+			},300);
+
+
+			setTimeout(function(){
+				var rt = setInterval(function(){//缩小
+					for(var i=0;i<54;i+=2){
+						$('.all_poker li').eq(i).css({'transform':'translateX(-260px) translateY(-52px) translateZ(-260px)','transition-duration':'0.3s'});
+					}
+					clearInterval(rt);
+				},300);
+				
+			},600);
+
+
+			setTimeout(function(){
+				var rtr = setInterval(function(){//旋转
+					for(var i=0;i<54;i+=2){
+						$('.all_poker li').eq(i).css({'transform':' rotateY(-'+i*10+'deg) rotateZ('+i*10+'deg) translateX('+i*10+'px) translateY(-'+i*3+'px) translateZ(-'+i*3+'px)','transition-duration':'0.3s'});
+					}
+					clearInterval(rtr);
+				},300);
+				
+			},900);
+		
+			// setTimeout(function(){
+			// 	var n=0;
+			// 	var rtr = setInterval(function(){//旋转
+			// 		if(n%2==0){
+			// 			$('.all_poker li').eq(i).css({'transform':' rotateY(-'+i*10+'deg) rotateZ('+i*10+'deg) translateX('+i*10+'px) translateY(-'+i*3+'px) translateZ(-'+i*3+'px)','transition-duration':'0.3s'});
+			// 		}else {
+			// 			$('.all_poker li').eq(j).css({'transform':' rotateY('+j*10+'deg) rotateZ(-'+j*10+'deg) translateX(-'+j*10+'px) translateY(-'+j*3+'px) translateZ(-'+j*3+'px)','transition-duration':'0.3s'});
+			// 		}
+			// 		// clearInterval(rtr);
+			// 	},300);
+					
+			// },900);
+
+			setTimeout(function(){
+				var rtnr = setInterval(function(){//继续旋转
+					for(var i=0;i<54;i+=2){
+						$('.all_poker li').eq(i).css({'transform':'rotateY(-'+(i*10+20)+'deg) rotateZ('+(i*10+20)+'deg) translateX('+i*10+'px) translateY(-'+(i*3+10)+'px) translateZ(-'+(i*3+10)+'px)','transition-duration':'6s'});
+					}
+					clearInterval(rtnr);
+				
+				},500);
+				// var rtnr1 = setInterval(function(){//继续抖动
+				// 	for(var i=0;i<54;i+=2){
+				// 		$('.all_poker li').eq(i).css({'transform':' rotateY(-'+i*10+'deg) rotateZ('+(i*10+10)+'deg) translateX('+i*10+'px) translateY(-'+i*3+'px) translateZ(-'+i*3+'px)','transition-duration':'5s'});
+				// 	}
+				// 	clearInterval(rtnr1);
+				
+				// },600);
+					
+			},900);
+
+
+		
+		
+		clearInterval(right);
+		},300);
+
+		//叠牌后状态1：translateX(527px) translateY(136px) translateZ(77px)  
+		// 叠牌后状态2： translateX(0px) translateY(-117px) translateZ(-444px) 
+		// 叠牌后状态3：translateX(-527px) translateY(136px) translateZ(77px)   
+		// 叠牌后状态4：translateX(0px) translateY(173px) translateZ(176px)
+		setTimeout(function(){
+			var n=53;
+			var turnar = setInterval(function(){
+				if(n<=0){
+					$('.all_poker li').eq(n).css({'top':'0px','transform':' rotateY(90deg) translateX(527px) translateY(136px) translateZ(77px)','transition-duration':'0.5s','transition-timing-function':'ease-in-out'});
+				}
+				
+				n--
+			},100);
+			
+		},2000);
+
+		setTimeout(function(){
+			var n=53;
+			var turnar = setInterval(function(){
+				if(n<=0){
+					$('.all_poker li').eq(n).css({'top':'0px','transform':'rotateY(180deg) translateX(0px) translateY(-117px) translateZ(-444px)','transition-duration':'0.5s','transition-timing-function':'ease-in-out'});
+				}
+				
+				n--
+			},100);
+			
+		},3000);
+
+		setTimeout(function(){
+			var n=53;
+			var turnar = setInterval(function(){
+				if(n<=0){
+					$('.all_poker li').eq(n).css({'top':'0px','transform':'rotateY(270deg) translateX(-527px) translateY(136px) translateZ(77px)','transition-duration':'0.5s','transition-timing-function':'ease-in-out'});
+				}
+				
+				n--
+			},100);
+			
+		},4000);
+
+		setTimeout(function(){
+			var n=53;
+			var turnar = setInterval(function(){
+				if(n<=0){
+					$('.all_poker li').eq(n).css({'top':'0px','transform':' rotateY(360deg) translateX(0px) translateY(173px) translateZ(176px)','transition-duration':'0.5s','transition-timing-function':'ease-in-out'});
+				}
+				
+				n--
+			},100);
+			
+		},5000);
+
+
+		//移动回原位
+		setTimeout(function(){
+			var n=53;
+			var tb = setInterval(function(){
+				if(n%2==0){
+					$('.all_poker li').eq(n).css({'top':'-'+n+'px','transform':' rotateZ(-360deg)  translateX(0px) translateY(0px) translateZ(0px)','transition-duration':'0.5s','transition-timing-function':'ease-in-out'});
+				}
+				else{
+					$('.all_poker li').eq(n).css({'top':'-'+n+'px','transform':' rotateY(360deg)  translateX(0px) translateY(0px) translateZ(0px)','transition-duration':'0.3s','transition-timing-function':'ease-in-out'});
+				}
+				
+				n--
+			},100);
+			
+		},9000);
+		setTimeout(function(){
+			var n=53;
+			var tb = setInterval(function(){
+				if(n>=0){
+					$('.all_poker li').eq(n).css({'top':'-'+n+'px','transform':'   translateX(0px) translateY(0px) translateZ(0px)','transition-duration':'0.1s'});
+				}
+				
+				n--
+			},10);
+			
+		},20000);
+
+		
+
+
+
+		setTimeout(function(){	//旋转后叠牌
+			var n=0;
+				var brr = setInterval(function(){
+					if(n%2==0){
+						$('.all_poker li').eq(n).css({'transform':' translateX(-178px) translateY(701px) translateZ(-248px)','transition-duration':'0.08s'});
+
+				}else {
+					$('.all_poker li').eq(n).css({'transform':' translateX(-178px) translateY(701px) translateZ(-248px)','transition-duration':'0.05s'});
+				}
+				// $('.all_poker li').eq(0).css({'transform':' translateX(-178px) translateY(701px) translateZ(-248px)','transition-duration':'0.05s'});
+				// $('.all_poker li').eq(1).css({'transform':' translateX(-178px) translateY(701px) translateZ(-248px)','transition-duration':'0.05s'});
+				// $('.all_poker li').eq(2).css({'transform':' translateX(-178px) translateY(701px) translateZ(-248px)','transition-duration':'0.05s'});
+			n++
+			
+			},100);
+		},1700);
+
+		
+	
+	
+		var left = setInterval(function(){//左边拉开
+		
+			for(var j=1;j<54;j+=2){
+				
+				$('.all_poker li').eq(j).css({'transform':'translateX(-'+j*5+'px) translateY(-'+j*3+'px) translateZ(-'+j*5+'px)','transition-duration':'0.3s'});
+
+			}
+			setTimeout(function(){
+				var lb = setInterval(function(){//上去
+					for(var j=1;j<54;j+=2){
+						$('.all_poker li').eq(j).css({'transform':'translateX('+j*5+'px) translateY('+j*3+'px) translateZ('+j*5+'px)','transition-duration':'0.3s'});
+					}
+					clearInterval(lb);
+				},300);
+				
+			},300);
+			
+			setTimeout(function(){
+				var lt = setInterval(function(){//缩小
+					for(var j=1;j<54;j+=2){
+						$('.all_poker li').eq(j).css({'transform':'translateX(-260px) translateY(-52px) translateZ(-260px)','transition-duration':'0.3s'});
+					}
+					clearInterval(lt);
+				},300);
+				
+			},600);
+
+			setTimeout(function(){
+				var ltr = setInterval(function(){//旋转
+					for(var j=1;j<54;j+=2){
+						$('.all_poker li').eq(j).css({'transform':' rotateY('+j*10+'deg) rotateZ(-'+j*10+'deg) translateX(-'+j*10+'px) translateY(-'+j*3+'px) translateZ(-'+j*3+'px)','transition-duration':'0.3s'});
+					}
+					clearInterval(ltr);
+				},300);
+				// 
+			},900);
+
+			setTimeout(function(){
+				var ltnr = setInterval(function(){//继续旋转
+					for(var j=1;j<54;j+=2){
+						$('.all_poker li').eq(j).css({'transform':' rotateY('+(j*10+20)+'deg) rotateZ(-'+(j*10+20)+'deg) translateX(-'+j*10+'px) translateY(-'+(j*3+10)+'px) translateZ(-'+(j*3+10)+'px)','transition-duration':'6s'});
+					}
+					clearInterval(ltnr);
+				},500);
+				// 
+			},900);
+			
+			clearInterval(left);
+		
+		 },300);
+
+		setTimeout(function(){
+			$('.mid_top ul').remove();
+			$('.mid_top').html(poker_html);
+		},1500);
+	}
+
+	function start(){
+		var i = 0;
+		var m = 0;
+		var int = setInterval(function(){
+			setTimeout(function(){
+				$('.all_poker li:last').animate({top:'200px',left:'-500px'},20);
+				setTimeout(function(){$('.all_poker li:last').remove()},20);
+
+				play_1.push(all_poker[m++]);
+				var poker_html = makePoker(play_1[play_1.length-1]);
+				$('.play_1').append(poker_html);
+
+				$('.play_1 li:last').css({left:(20*i)+'px'});
+				$('.play_1').css({transform:'rotate(90deg)'});
+			},30);
+			
+			setTimeout(function(){
+				$('.all_poker li:last').animate({top:'400px'},20);
+				setTimeout(function(){$('.all_poker li:last').remove()},20);
+
+				play_2.push(all_poker[m++]);
+				var poker_html = makePoker(play_2[play_2.length-1]);
+				$('.play_2').append(poker_html);
+
+				$('.play_2 li:last').css({left:(20*i)+'px'});
+				$('.play_2').css({left:-(10*i)+'px'});
+			},60);
+
+			setTimeout(function(){
+				$('.all_poker li:last').animate({top:'200px',left:'500px'},20);
+				setTimeout(function(){$('.all_poker li:last').remove()},20);
+
+				play_3.push(all_poker[m++]);
+				var poker_html = makePoker(play_3[play_3.length-1]);
+				$('.play_3').append(poker_html);
+
+				$('.play_3 li:last').css({right:(20*i)+'px'});
+				$('.play_3').css({transform:'rotate(-90deg)'});
+			},90);
+
+			i++;
+			if (i >=17) {
+				clearInterval(int);
+				setTimeout(function(){
+					paixu();
+				},100);
+			}
+
+		},100);
+	
+	}
+
+	//排序
+	function paixu(){
+		paixu1();
+		paixu2();
+		paixu3();	
+	}
+
+	//玩家1排序
+	function paixu1(){
+		play_1 = play_1.sort(function(x, y){
+				var x_arr = x.split('_');
+				var y_arr = y.split('_');
+
+				if (x_arr[0] != y_arr[0]) {
+					return x_arr[0]-y_arr[0];
+				}else{
+					return x_arr[1]-y_arr[1];
+				}
+			});
+		$('.play_1 li').remove();
+		for(var i=0;i<play_1.length;i++){
+			var poker_html = makePoker(play_1[i]);
+			$('.play_1').append(poker_html);
+			$('.play_1 li:last').css({left:(20*i)+'px'});
+			$('.play_1').css({transform:'rotate(90deg)'});
+		}
+	}
+
+	//玩家2排序
+	function paixu2(){
+		play_2 = play_2.sort(function(x, y){
+				var x_arr = x.split('_');
+				var y_arr = y.split('_');
+
+				if (x_arr[0] != y_arr[0]) {
+					return x_arr[0]-y_arr[0];
+				}else{
+					return x_arr[1]-y_arr[1];
+				}
+			});
+		$('.play_2 li').remove();
+		for(var i=0;i<play_2.length;i++){
+			var poker_html = makePoker(play_2[i]);
+			$('.play_2').append(poker_html);
+			$('.play_2 li:last').css({left:(20*i)+'px'});
+			$('.play_2').css({left:-(10*i)+'px'});
+		}
+	}
+
+	//玩家2排序
+	function paixu3(){
+		play_3 = play_3.sort(function(x, y){
+				var x_arr = x.split('_');
+				var y_arr = y.split('_');
+
+				if (x_arr[0] != y_arr[0]) {
+					return x_arr[0]-y_arr[0];
+				}else{
+					return x_arr[1]-y_arr[1];
+				}
+			});
+		$('.play_3 li').remove();
+		for(var i=0;i<play_3.length;i++){
+			var poker_html = makePoker(play_3[i]);
+			$('.play_3').append(poker_html);
+			$('.play_3 li:last').css({right:(20*i)+'px'});
+			$('.play_3').css({transform:'rotate(-90deg)'});
+		}
+	}
+	
+
+	function makePoker( data ){
+		var poker_arr = data.split('_');
+
+		var arr = Array(
+				Array(-15, -225),			// 方块花色的坐标
+				Array(-15, -5),				// 梅花花色的坐标
+				Array(-160, -5),				// 红桃花色的坐标
+				Array(-160, -225)			// 黑桃花色的坐标
+				);
+
+		if (poker_arr[0] != 14) {
+			var x = arr[poker_arr[1]][0];
+			var y = arr[poker_arr[1]][1];
+		}else{
+			if (poker_arr[1] == 0) {
+				var x = -161;
+				var y = -5; 
+			}else{
+				var x = -17;
+				var y = -5;
+			}
+		}
+		
+		var poker_html = '<li style="width: 125px; height: 175px; background: url(./images/'+poker_arr[0]+'.png) '+x+'px '+y+'px;" data-poker="'+data+'"></li>';
+		return poker_html;
+	}
+
+	function qiandizhu(){
+		var qa =Math.round(Math.random()*2);
+		var qs =0;
+		$('.qdz').eq(qa).css({'display':'block'});
+		$('body').on('click','.qdz input',function(){
+			var qd =parseInt($(this).attr('data-value'));
+			if(qd>0){
+				boss=qd;
+				$('.all_poker li').remove();
+				var dizhupai ='';
+				for(var i =all_poker.length-1;i>all_poker.length-4;i--){
+						var li_html = makePoker(all_poker[i]);
+						dizhupai +=li_html;						
+						$('.all_poker').append(li_html);
+						if(qd==1){
+							play_1.push(all_poker[i]);
+							$('.play_1').append(dizhupai);
+							paixu1();
+							//更换地主身份
+							$('.left .mingchen img').attr('src', './images/dizhus.png');
+							$('.left #panduan').attr('value','1');
+						}else if(qd==2){
+							play_2.push(all_poker[i]);
+							$('.play_2').append(dizhupai);
+							paixu2();
+							//更换地主身份
+							$('.mid_end .mingchen img').attr('src', './images/dizhus.png');
+							$('.mid_end #panduan').attr('value','1');
+						}else if(qd==3){
+							play_3.push(all_poker[i]);
+							$('.play_3').append(dizhupai);
+							paixu3();
+							//更换地主身份
+							$('.right .mingchen img').attr('src', './images/dizhus.png');
+							$('.right #panduan').attr('value','1');
+						}
+					}
+				$('.all_poker li').eq(0).animate({'left':'-200px','top':'0px'},200);
+				$('.all_poker li').eq(1).animate({'left':'200px','top':'0px'},200);
+				$('#tomusic').attr('src', '8.mp3'); //抢地主音效
+				// $('.qdz').css({'display':'none'});
+				$('.qdz').hide();
+				$('.mingchen').show();
+				// return qd;
+				startGame(qd);
+			}else{
+				qs++;
+
+				if(qs<3){
+					qa =(++qa>2)?0:qa;
+					$('.qdz').css({'display':'none'});
+					$('.qdz').eq(qa).css({'display':'block'});
+				}else{
+					tanchu('没有人抢地主，本局无效。点确定重新开始。');
+
+					var url =window.location.href;
+					window.location.href = url;
+				}
+			}
+		});
+	}
+
+	var now_poker = Array();
+	function startGame( index ){
+		var temp_poker = Array();
+		var temp_poker_type = 0;
+		// 绑定打牌玩家可以点击牌的事件
+		$('.play_'+index).on('click','li', function(){
+			var select = $(this).attr('class');
+			// 判断是否选中出牌
+			if (select == 'select') {
+				$(this).attr('class','');
+				var data_poker = $(this).attr('data-poker');
+				for(var i=0; i<temp_poker.length; i++){
+					if( temp_poker[i] == data_poker){
+						temp_poker.splice(i,1);		// 删除对应的选中牌的数据
+						break;
+					}
+				}
+			}else{
+				$(this).attr('class','select');
+				var data_poker = $(this).attr('data-poker');
+				temp_poker.push(data_poker);
+			}
+		});
+
+		var index = index;
+		// 先开启计时器
+		var n = 30;
+		$('.play_'+index+'~.clock').show();
+		var int = setInterval(function(){
+			$('.play_'+index+'~.clock').html(--n);
+			if (n <= 0) {
+				$('.play_'+index+'~.clock').hide();
+				clearInterval(int);
+				$('.play_'+index+'~.but .pass').click();
+			}
+		},1000);
+
+		// 把隐藏的打牌按钮显示
+		$('.play_'+index+'~.but').show();
+		$('.play_'+index+'~.but').on('click','.play', function(){
+			// 对出牌进行检测
+			var temp_arr = checkPokers(temp_poker);
+			if(!temp_arr){
+				tanchu('你出的牌不正确，请从新选择。');
+				return false;
+			}else{
+				temp_poker = temp_arr[0];		// 已经排序完成的牌型
+				temp_poker_type = temp_arr[1];	// 本次牌型的类型
+
+				//判断牌型来执行动画和音效
+				if(temp_poker_type ==1){
+				
+					//单张的动画和音效
+				}else if(temp_poker_type ==2){
+                                                             
+					//对子的动画和音效
+				}else if(temp_poker_type ==3){
+					//三张的动画和音效
+				}else if(temp_poker_type ==4){
+					//三带一的动画和音效
+				}else if(temp_poker_type ==5){
+					$('#ttomusic').attr('src' ,'顺子.mp3');
+                                                                $('.mid_top img').css({'display':'block'}); 
+					$('.mid_top img').attr('src','./images/psb (4).png');
+					$('.mid_top img').animate({left:'250px'},750);
+					setTimeout(function(){
+                                                                        $('.mid_top img').css({'display':'none'}); 
+                                                                        $('.mid_top img').animate({left:'-250px'},800);  
+					},850);
+					//顺子的动画和音效
+				}else if(temp_poker_type ==6){
+					$('#ttomusic').attr('src' ,'29.mp3');
+					 $('.mid_top img').css({'display':'block'}); 
+					$('.mid_top img').attr('src','./images/psb (1).png');
+					$('.mid_top img').animate({left:'250px'},750);
+					setTimeout(function(){
+                                                                        $('.mid_top img').css({'display':'none'}); 
+                                                                        $('.mid_top img').animate({left:'-250px'},800);  
+					},850);
+					//三带二的动画和音效
+				}else if(temp_poker_type ==7){
+					//四带二的动画和音效
+				}else if(temp_poker_type ==8){
+					//炸弹的动画和音效
+					$('#ttomusic').attr('src' ,'炸弹.mp3');
+					$('.mid_top img').css({'display':'block'}); 
+					$('.mid_top img').attr('src','./images/chr51_10113008.png');
+					$('.mid_top img').animate({left:'250px'},750);
+					setTimeout(function(){
+                                                                        $('.mid_top img').css({'display':'none'}); 
+                                                                        $('.mid_top img').animate({left:'-250px'},800);  
+					},850);
+				}else if(temp_poker_type ==9){
+					//王炸的动画和音效
+					$('.mid_top img').css({'display':'block'}); 
+					$('.mid_top img').animate({left:'0px'});
+					$('.mid_top img').attr('src', './images/wangzha.gif');
+					setTimeout(function(){
+                                                                        $('.mid_top img').css({'display':'none'}); 
+					},6600);
+					$('#ttomusic').attr('src' ,'123165.mp3');
+				}else if(temp_poker_type ==10 || temp_poker_type ==12 ||temp_poker_type ==13){
+					//飞机的动画和音效
+					$('#ttomusic').attr('src' ,'炸弹.mp3');
+					$('.mid_top img').css({'display':'block'}); 
+					$('.mid_top img').attr('src','./images/chr51_10001024.png');
+					$('.mid_top img').animate({left:'250px'},750);
+					setTimeout(function(){
+                                                                        $('.mid_top img').css({'display':'none'}); 
+                                                                        $('.mid_top img').animate({left:'-250px'},800);  
+					},850);
+				}else if(temp_poker_type ==11){
+					//连对的动画和音效
+					$('#ttomusic').attr('src' ,'对子.mp3');
+					$('.mid_top img').css({'display':'block'}); 
+					$('.mid_top img').attr('src','./images/chr51_10001035.png');
+					$('.mid_top img').animate({left:'250px'},750);
+					setTimeout(function(){
+                                                                        $('.mid_top img').css({'display':'none'}); 
+                                                                        $('.mid_top img').animate({left:'-250px'},800);  
+					},850);
+				}
+
+				// 通过打牌规则大小的判断，确定是否能把牌打出去
+				var vs_result = checkVS(temp_arr, now_poker);
+				if(!vs_result){
+					tanchu('你出的牌不正确，请从新选择。');
+					return false;
+				}else{
+					// 把牌打出去
+					pass = 0;
+					now_poker = Array();	// 清空上一把牌的now_poker
+					now_poker[0] = Array();
+					// 使用遍历方法对now_poker进行非引用赋值
+					for(var i=0; i<temp_poker.length; i++){
+						now_poker[0].push(temp_poker[i]);
+					}
+					now_poker[1] = temp_arr[1];
+
+					// 把时计器关停
+					clearInterval(int);
+					// 解除原来绑定的事件
+					$('.play_'+index).off('click','li');		
+					$('.play_'+index+'~.but').off('click','.pass');
+					$('.play_'+index+'~.but').off('click','.play');
+
+
+					// 生成页面中打出去牌的HTML
+					$('.now_poker li').remove();
+					for(var i=0; i<now_poker[0].length; i++){
+						var li = makePoker(now_poker[0][i]);
+						$('.now_poker').append(li);
+						$('.now_poker li:last').css({left:(50*i)+'px'});
+					}
+
+					//定义判断顺利方身份的值
+					play_3sf=$('.right #panduan').attr('value');
+					play_2sf=$('.mid_end #panduan').attr('value');
+					play_1sf=$('.left #panduan').attr('value');
+					
+					// 删除对应牌数据中的数据
+					switch(index){
+						case 1:
+							play_1 = delPoker(play_1,temp_poker);
+							$('.play_1 li').remove();
+							for(var i = 0; i<play_1.length; i++){
+								// 生成1号玩家的牌 
+								var poker_html_1 = makePoker(play_1[i]);
+								$('.play_1').append(poker_html_1);
+								$('.play_1 li:last').css({left:(20*i)+'px'});
+								$('.play_1').css({transform:'rotate(90deg)'});
+
+							}
+							// 隐藏掉所有对应的按钮与计时器
+							$('.play_1~.clock').hide();
+							$('.play_1~.but').hide();
+                                                                                          
+							if(play_1.length == 0){
+								if(play_1sf==1){
+									tanchu('地主赢了');
+								}else if(play_1sf==2){
+									tanchu('农民赢了');
+								}
+
+								setTimeout(function(){
+									var url =window.location.href;
+									window.location.href = url;
+								},5000);
+								return false;
+							}
+							
+							$('#tomusic').attr('src' ,'社长.mp3');
+							// 重新执行startGame
+							index = 2;
+							startGame(index);
+						break;
+						case 2:
+							play_2 = delPoker(play_2,temp_poker);
+							$('.play_2 li').remove();
+							for(var i = 0; i<play_2.length; i++){
+								// 生成1号玩家的牌 
+								var poker_html_1 = makePoker(play_2[i]);
+								$('.play_2').append(poker_html_1);
+								$('.play_2 li:last').css({left:(20*i)+'px'});
+								$('.play_2').css({left:-(10*i)+'px'});
+							}
+
+							// 隐藏掉所有对应的按钮与计时器
+							$('.play_2~.clock').hide();
+							$('.play_2~.but').hide();
+
+							if(play_2.length == 0){
+								if(play_2sf==1){
+									tanchu('地主赢了');
+								}else if(play_2sf==2){
+									tanchu('农民赢了');
+								}
+								setTimeout(function(){
+									var url =window.location.href;
+									window.location.href = url;
+								},5000);
+								return false;
+							}
+
+							$('#tomusic').attr('src' ,'貘良.mp3');
+							// 重新执行startGame
+							index = 3;
+							startGame(index);
+
+						break;
+						case 3:
+							play_3 = delPoker(play_3,temp_poker);
+							$('.play_3 li').remove();
+							for(var i = 0; i<play_3.length; i++){
+								// 生成1号玩家的牌 
+								var poker_html_1 = makePoker(play_3[i]);
+								$('.play_3').append(poker_html_1);
+								$('.play_3 li:last').css({right:(20*i)+'px'});
+								$('.play_3').css({transform:'rotate(-90deg)'});
+							}
+
+							// 隐藏掉所有对应的按钮与计时器
+							$('.play_3~.clock').hide();
+							$('.play_3~.but').hide();
+							
+							if(play_3.length == 0){
+								if(play_3sf==1){
+									tanchu('地主赢了');
+								}else if(play_3sf==2){
+									tanchu('农民赢了');
+								}
+								setTimeout(function(){
+									var url =window.location.href;
+									window.location.href = url;
+								},5000);
+								return false;
+							}
+
+							$('#tomusic').attr('src' ,'turn.mp3');
+							// 重新执行startGame
+							index = 1;
+							startGame(index);
+
+						break;
+					}
+				}
+			}
+			
+		});
+
+		$('.play_'+index+'~.but').on('click','.pass', function(){
+			if(now_poker.length == 0){
+				tanchu('你现在无法过牌，因为桌面上没有牌。');
+				return false;
+			}
+			pass++;
+			if(pass == 2){
+				now_poker = [];			// 如果当前情况已经连继两次都PASS的话则清空桌面牌
+			}
+
+			// 隐藏掉所有对应的按钮与计时器
+			$('.play_'+index+'~.clock').hide();
+			$('.play_'+index+'~.but').hide();
+			// 把时计器关停
+			clearInterval(int);
+			// 解除原来绑定的事件
+			$('.play_'+index).off('click','li');	
+			$('.play_'+index+'~.but').off('click','.pass');
+			$('.play_'+index+'~.but').off('click','.play');
+
+
+			// 重新执行startGame
+			index = (++index > 3)?1:index;
+			startGame(index);
+		});
+
+		
+	}
+
+	//检查牌型看是否符合规则
+	function checkPokers( poker_arr ) {
+		poker_arr.sort(function(x,y){
+			var x_arr = x.split('_');
+			var y_arr = y.split('_');
+			
+			if (x_arr[0] != y_arr[0]) {
+				return x_arr[0]-y_arr[0];
+			}else{
+				return x_arr[1]-y_arr[1];
+			}
+		});// 对牌进行排序
+
+		// 先把牌的点数提出
+		var temp = Array();
+		for(var i =0; i<poker_arr.length; i++){
+			var arr = poker_arr[i].split('_');
+			temp.push(arr[0]);
+		}
+
+		if(poker_arr.length <=4){
+			if( poker_arr.length == 0) {		// 代表没选牌打出
+				return false;
+			}
+
+			//设置单张
+			if( poker_arr.length == 1) {
+				var data = Array(
+				poker_arr,
+				1		// 设置牌型为单张
+				);
+			return data;
+			}
+
+			//设置王炸和对子
+			if(poker_arr.length == 2){
+				if(temp[0] == 14 && temp[1] == temp[0]){
+				var data = Array(
+					poker_arr,
+					9 		// 设置牌型为王炸
+					);
+				return data;
+				}else if(temp[1] == temp[0]){
+							
+					var data = Array(
+						poker_arr,
+						2 		// 设置牌型为对子
+						);
+					return data;
+				}else{
+					return false;
+				}
+			}
+
+			//设置三张
+			if(poker_arr.length == 3){
+				if(temp[0] == temp[1] && temp[1] == temp[2]){
+				var data = Array(
+					poker_arr,
+					3, 		// 设置牌型为3张
+					temp[0]
+					);
+					return data;
+				}else{
+					return false;
+				}
+			}
+
+			//设置炸弹和三带1
+			if(poker_arr.length == 4){
+				//把得到的点数数组进行升序排序
+				temp.sort(function(x,y){
+					return x-y;
+				});
+				if( temp[0] == temp[1] && temp[1]==temp[2] && temp[2]==temp[3]){	// 判断为炸弹
+					var data = Array(
+						poker_arr,
+						8 		// 设置牌型为炸弹
+						);
+					return data;
+				}else if(temp[0] == temp[1] && temp[1]==temp[2] || temp[1]==temp[2] && temp[2]==temp[3]){		// 判断前3张牌或后3张牌是否一样
+					var data = Array(
+						poker_arr,
+						4 		// 设置牌型为3带1
+						);
+					return data;
+				}else{
+					return false;
+				}
+			}
+
+		}else if(poker_arr.length >4){
+			//设置3带2
+			if(poker_arr.length == 5){
+				//把得到的点数数组进行升序排序
+				temp.sort(function(x,y){
+					return x-y;
+				});
+				if(temp[0]==temp[1]&&temp[1]==temp[2]&&temp[3]==temp[4]||temp[0]==temp[1]&&temp[2]==temp[3]&&temp[3]==temp[4]){		// 判断是否3带2
+					var data = Array(
+						poker_arr,
+						6 		// 设置牌型为3带2
+						);
+					return data;
+				}
+			}
+
+			//设置4带2
+			if(poker_arr.length == 6){
+				// 把得到的点数数组进行升序排序
+				temp.sort(function(x,y){
+					return x-y;
+				});
+
+				// 判断是否4带2
+				var case1 = true;
+				var case2 = true;
+				var case3 = true;
+				for(var i=0; i<3; i++){		
+					if(temp[i] != temp[i+1]){	// 判断前4张是否一样
+						case1 = false;
+					}
+					if(temp[i+1] != temp[i+2]){	// 判断中间4张是否一样
+						case2 = false;
+					}
+					if(temp[i+2] != temp[i+3]){	// 判断最后4张是否一样
+						case3 = false;
+					}
+				}
+
+				if(case1||case2||case3){	//通过case来判断是否牌型4带2
+					var data = Array(
+						poker_arr,
+						7 		// 设置牌型为4带2
+						);
+					return data;
+				}
+			}
+
+			//设置顺子
+			if(poker_arr.length >4 && poker_arr.length <13){
+				var res = true;
+				for(var i=1; i<temp.length;i++){
+					if(parseInt(temp[i-1])+1!= parseInt(temp[i])){
+						res = false;
+						break;
+					}
+				}
+				if(res){
+					var data = Array(
+						poker_arr,
+						5 		// 设置牌型为顺子
+						);
+					return data;
+				}
+			}
+
+			//设置连对
+			if(poker_arr.length >=6 && poker_arr.length %2 ==0){
+				var res = true;
+				for(var i=0; i<temp.length-2; i += 2){
+					if(parseInt(temp[i])+1 != parseInt(temp[i+2]) || temp[i]!=temp[i+1]){					
+						res = false;
+						break;
+					}
+				}
+				
+				if(res){
+					var data = Array(
+						poker_arr,
+						11 		// 设置牌型为连对
+						);
+					return data;
+				}
+			}
+
+			//设置飞机
+			if(poker_arr.length >=6 && poker_arr.length <13){
+				//设置飞机不带
+				if(poker_arr.length %3 ==0){
+					var res = 1;
+					for(var i=0; i<temp.length-3; i += 3){
+						if(parseInt(temp[i])+1 != parseInt(temp[i+3]) || temp[i]!=temp[i+1]&&temp[i]!=temp[i+2]||temp[i+3]!=temp[i+5]){	
+							res = 0;
+							break;
+						}
+					}
+					
+					if(res>0){
+						var data = Array(
+							poker_arr,
+							10 		// 设置牌型为飞机
+							);
+						return data;
+					}
+				}
+
+				//设置飞机带单
+				if(poker_arr.length >=7){
+					var res=0;
+					for(var i=0; i<temp.length-5; i ++){
+						if(parseInt(temp[i])+1 == parseInt(temp[i+3]) && temp[i]==temp[i+2]&&temp[i+3]==temp[i+5]){	
+							res ++;
+
+						}
+					}
+					if(poker_arr.length !=parseInt(res*3)+res+4){
+						res=0;
+					}
+
+					if(res>0){
+						var data = Array(
+							poker_arr,
+							12 		// 设置牌型为飞机带单
+							);
+						return data;
+					}
+				}
+
+				//设置飞机带双
+				if(poker_arr.length >=10){
+					var res=0;
+					for(var i=0; i<temp.length-5; i ++){
+						if(parseInt(temp[i])+1 == parseInt(temp[i+3]) && temp[i]==temp[i+2]&&temp[i+3]==temp[i+5]){	
+							res ++;
+
+						}
+					}
+					for(var i=0; i<temp.length-5; i ++){
+						if(poker_arr.length !=parseInt(res*3)+res+6){
+							if(parseInt(temp[i+6])!=parseInt(temp[i+7])||parseInt(temp[i+8])!=parseInt(temp[i+9])){
+								res=0;
+							}
+						}
+						
+					}
+					
+
+					if(res>0){
+						var data = Array(
+							poker_arr,
+							13		// 设置牌型为飞机带双
+							);
+						return data;
+					}
+				}
+				
+			}
+			
+		}
+
+
+	}
+
+	//判断牌型大小
+	function checkVS(poker_data, now_poker){
+		// 当桌面上没有牌，只要有牌出就给出
+		if(now_poker.length == 0){
+			return true;
+		}
+		// 1、判断型是否王炸
+		if(poker_data[1] == 9){
+			return true;
+		}
+
+		// 2、判断牌型是否一样并且出牌方不是炸弹
+		if(poker_data[1] != now_poker[1] &&  poker_data[1] != 8 ){
+			return false;
+		}
+
+		// 3、如果出的牌是炸弹，桌面的牌不是炸弹就肯定可以出
+		if(poker_data[1] == 8 &&  now_poker[1] !=8){
+			return true;
+		}
+
+		// 4、如果两上牌型一样，长度不一样直接返回false
+		if(poker_data[1] == now_poker[1] && poker_data[0].length != now_poker[0].length){
+			return false;
+		}
+
+		// 在对各自牌型判断前需要把两个牌组数据的点数进行提出
+		var play = Array();		// 玩家出的牌型 点数数组 
+		var now = Array();		// 当前桌面牌型点数数组
+		for(var i =0; i<poker_data[0].length; i++){
+			var t= poker_data[0][i].split('_');
+			play.push(parseInt(t[0]));
+
+			var t2 = now_poker[0][i].split("_");
+			now.push(parseInt(t2[0]));
+		}
+
+		// 5、各牌型进行判断
+		switch(now_poker[1]){
+			// 判断单张牌型
+			case 1:
+				if(play[0] == 14 && now[0] == 14){
+					if(t[1]>t2[1]){
+						return true;
+					}else{
+						return false;
+					}
+				}else{
+					if (play[0] > now[0]){
+						return true;
+					}else{
+						return false;
+					}
+				}
+			break;
+			// 判断对子
+			case 2:
+				if (play[0] > now[0]){
+					return true;
+				}else{
+					return false;
+				}
+			break;
+			// 判断牌型3张
+			case 3:
+				if (play[0] > now[0]){
+					return true;
+				}else{
+					return false;
+				}
+			break;
+			// 判断牌型3带1
+			case 4:
+				// 拿到3带1中玩家的判断值
+				if(play[0] == play[2]){
+					var v1 = play[0];
+				}else {
+					var v1 = play[3];
+				}
+
+				// 拿到3带1中桌面的判断值
+				if(now[0] == now[2]){
+					var v2 = now[0];
+				}else {
+					var v2 = now[3];
+				}
+
+				// 使用判断值来判断大小
+				if( v1 > v2){
+					return true;
+				}else{
+					return false;
+				}
+			break;
+			// 判断牌型3带2
+			case 6:
+				// 拿到3带2中玩家的判断值
+				if(play[0] == play[2]){
+					var v1 = play[0];
+				}else {
+					var v1 = play[4];
+				}
+
+				// 拿到3带2中桌面的判断值
+				if(now[0] == now[2]){
+					var v2 = now[0];
+				}else {
+					var v2 = now[4];
+				}
+
+				// 使用判断值来判断大小
+				if( v1 > v2){
+					return true;
+				}else{
+					return false;
+				}
+			break;
+			// 判断顺子的牌型
+			case 5:
+				if(play[play.length-1] > now[now.length-1]){
+					return true;
+				}else{
+					return false;
+				}
+			break;
+			//判断飞机的牌型
+			case 10:
+				// 拿到飞机中玩家的判断值
+				if(play[3] == play[5]){
+					var v1 = play[3];
+				}
+
+				// 拿到飞机中桌面的判断值
+				if(now[3] == now[5]){
+					var v2 = now[3];
+				}
+
+				// 使用判断值来判断大小
+				if( v1 > v2){
+					return true;
+				}else{
+					return false;
+				}
+			break;
+			case 11:
+				//顺子
+				if (play[5] > now[5]){
+					return true;
+				}else{
+					return false;
+				}
+
+			break;
+		}
+	}
+
+	//删除指定牌型的方法
+	function delPoker(poker_arr, del_arr){
+		while( del_arr.length > 0){
+			for(var i=0; i<poker_arr.length; i++){
+				if( poker_arr[i] == del_arr[0]){
+					poker_arr.splice(i,1);
+					break;
+				}
+			}
+			del_arr.splice(0,1);
+		}
+		return poker_arr;
+	}
+
+	//重新定义弹出框
+	function tanchu(str){ 
+		var msgw,msgh,bordercolor; 
+		msgw=400;//提示窗口的宽度 
+		msgh=100;//提示窗口的高度 
+		titleheight=30//提示窗口标题高度 
+		bordercolor="#395168";//提示窗口的边框颜色 
+		titlecolor="#7f7d7d";//提示窗口的标题颜色 
+		var sWidth,sHeight; 
+		sWidth=document.body.offsetWidth;//浏览器工作区域内页面宽度 或使用 screen.width//屏幕的宽度 
+		sHeight=screen.height;//屏幕高度（垂直分辨率） 
+		//背景层（大小与窗口有效区域相同，即当弹出对话框时，背景显示为放射状透明灰色） 
+		var bgObj=document.createElement("div");//创建一个div对象（背景层） //动态创建元素，这里创建的是 div 
+		//定义div属性
+		bgObj.setAttribute('id','bgDiv'); 
+		bgObj.style.position="absolute"; 
+		bgObj.style.top="0"; 
+		bgObj.style.background="#777"; 
+		bgObj.style.filter="progid:DXImageTransform.Microsoft.Alpha(style=3,opacity=25,finishOpacity=75"; 
+		bgObj.style.opacity="0.6"; 
+		bgObj.style.left="0"; 
+		bgObj.style.width=sWidth + "px"; 
+		bgObj.style.height=sHeight + "px"; 
+		bgObj.style.zIndex = "10000"; 
+		document.body.appendChild(bgObj);//在body内添加该div对象 
+		//创建一个div对象（提示框层） 
+		var msgObj=document.createElement("div") 
+		//定义div属性
+		msgObj.setAttribute("id","msgDiv"); 
+		msgObj.setAttribute("align","center"); 
+		msgObj.style.background="white"; 
+		msgObj.style.border="1px solid " + bordercolor; 
+		msgObj.style.position = "absolute"; 
+		msgObj.style.left = "50%"; 
+		msgObj.style.top = "50%"; 
+		msgObj.style.font="12px/1.6em Verdana, Geneva, Arial, Helvetica, sans-serif"; 
+		msgObj.style.marginLeft = "-225px" ; 
+		msgObj.style.marginTop = -75+document.documentElement.scrollTop+"px"; 
+		msgObj.style.width = msgw + "px"; 
+		msgObj.style.height =msgh + "px"; 
+		msgObj.style.textAlign = "center"; 
+		msgObj.style.lineHeight ="25px"; 
+		msgObj.style.zIndex = "10001"; 
+		var title=document.createElement("h4");//创建一个h4对象（提示框标题栏） 
+		//定义h4的属性
+		title.setAttribute("id","msgTitle"); 
+		title.setAttribute("align","right"); 
+		title.style.margin="0"; 
+		title.style.padding="3px"; 
+		title.style.background=bordercolor; 
+		title.style.filter="progid:DXImageTransform.Microsoft.Alpha(startX=20, startY=20, finishX=100, finishY=100,style=1,opacity=75,finishOpacity=100);"; 
+		title.style.opacity="0.75"; 
+		title.style.border="1px solid " + bordercolor; 
+		title.style.height="18px"; 
+		title.style.font="12px Verdana, Geneva, Arial, Helvetica, sans-serif"; 
+		title.style.color="white"; 
+		title.style.cursor="pointer"; 
+		title.innerHTML="关闭"; 
+		title.onclick=removeObj; 
+		var button=document.createElement("input");//创建一个input对象（提示框按钮） 
+		//定义input的属性
+		button.setAttribute("type","button"); 
+		button.setAttribute("value","关闭"); 
+		button.style.width="60px"; 
+		button.style.align="center"; 
+		button.style.marginLeft="250px"; 
+		button.style.marginBottom="10px"; 
+		button.style.background=bordercolor; 
+		button.style.border="1px solid "+ bordercolor; 
+		button.style.color="white"; 
+		button.onclick=removeObj; 
+		function removeObj(){//点击标题栏触发的事件 
+		   document.body.removeChild(bgObj);//删除背景层Div 
+		   document.getElementById("msgDiv").removeChild(title);//删除提示框的标题栏 
+		   document.body.removeChild(msgObj);//删除提示框层 
+		} 
+		document.body.appendChild(msgObj);//在body内添加提示框div对象msgObj 
+		document.getElementById("msgDiv").appendChild(title);//在提示框div中添加标题栏对象title 
+		var txt=document.createElement("p");//创建一个p对象（提示框提示信息） 
+		//定义p的属性
+		txt.style.margin="1em 0" 
+		txt.setAttribute("id","msgTxt"); 
+		txt.innerHTML=str;//来源于函数调用时的参数值 
+		document.getElementById("msgDiv").appendChild(txt);//在提示框div中添加提示信息对象txt 
+		document.getElementById("msgDiv").appendChild(button);//在提示框div中添加按钮对象button 
+	} 
+
+});
+</script>
+</head>
+
+<body style="background:url(./images/543.png)-170px no-repeat ">
+<div class="left">
+	<div class="mingchen">
+		<img src="./images/nongm.png">
+	</div>
+	<ul class="play_1">
+	</ul>
+	<div class="qdz">
+		<input class="anniu" type="button" value="抢地主" data-value='1'>
+		<input class="anniu" type="button" value="不抢" data-value='0'>
+	</div>
+	<div class="clock">
+			30
+	</div>
+	<div class="but">
+		<input class="play" type="button" value="出牌">
+		<input class="pass" type="button" value="过牌">
+	</div>
+	<div id="panduan" value="2">	
+	</div>	
+</div>
+<div class="mid">
+	<div class="mid_top">
+		<ul class="all_poker">
+		</ul>
+		<div class="zz">
+		<ul class="now_poker">
+			
+		</ul>
+		</div>
+		<img src="">
+	</div>
+	<div class="mid_end">
+	             <input type="button"  id="xipai" />
+		<input type="button"  id="fapai" />
+		<div class="mingchen">
+			<img src="./images/nongm.png">
+		</div>
+		<ul class="play_2">
+		</ul>
+		<div class="qdz">
+			<input class="anniu" type="button" value="抢地主" data-value='2'>
+			<input class="anniu" type="button" value="不抢" data-value='0'>
+		</div>
+		<div class="clock">
+			30
+		</div>	
+		<div class="but">
+			<input class="play" type="button" value="出牌">
+			<input class="pass" type="button" value="过牌">
+		</div>
+		<div id="panduan" value="2">	
+		</div>
+	</div>
+	
+</div>
+<div class="right">
+	<div class="mingchen">
+			<img src="./images/nongm.png">
+	</div>
+	<ul class="play_3">
+	</ul>
+	<div class="qdz">
+		<input  class="anniu" type="button" value="抢地主" data-value='3'>
+		<input class="anniu" type="button" value="不抢" data-value='0'>
+	</div>
+	<div class="clock">
+			30
+	</div>
+	<div class="but">
+		<input class="play" type="button" value="出牌">
+		<input class="pass" type="button" value="过牌">
+	</div>	
+	<div id="panduan" value="2">	
+	</div>
+</div>
+<audio id="ttomusic" autoplay>
+<audio id="ximusic" autoplay>
+
+<audio id="music" autoplay loop="loop" >
+<audio id="tomusic" autoplay>
+</body>
+</html>

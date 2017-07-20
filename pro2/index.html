@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>斗地主</title>
+	<!-- 加载JQ -->
+<script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+<link rel="stylesheet" href="./css/index.css">
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+}
+li{
+	list-style: none;
+}
+.zz{ 
+    position: absolute;
+    left: 20%;
+}
+.left{
+	width:20%;
+	height: 800px;
+	float: left;
+           
+}
+.left .qdz {
+	margin:350px 0 0 0;
+	text-align: center;
+}
+.left .clock {
+	width: 54px;
+	height: 54px;
+	line-height: 36.5px;
+	text-align: center;
+	font-size: 17px;
+	display: none;
+	 font-family: "微软雅黑",Hiragino Sans GB;
+	 background:url('./images/gototop_btn.png')center no-repeat;
+	color:#fff;
+	margin:0px 0px 0px 260px;
+	padding:16px 0px 0px 0px;
+	
+}
+.left .but{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	margin: 300px 0 0 0;
+	text-align: center;
+	display: none;
+}
+.mid{
+	width:60%;
+	height: 800px;
+	float: left;
+	
+}
+.mid_top{
+	width: 100%;
+	height: 500px;
+	float: left;
+	perspective:500px;
+	perspective-origin: 50% -35%;
+	position:relative;
+}
+.mid_top img{
+	position: absolute;
+	z-index:100;
+	border:none;
+	margin:-287px 0px 0px 180px;
+}
+.mid_end{
+	width: 100%;
+	height: 300px;
+	float: left;
+	
+	background:rgba(10,10,5,0.6);
+}
+.mid_end .clock {
+	width: 54px;
+	height: 54px;
+	line-height: 36.5px;
+	text-align: center;
+	font-size: 17px;
+	display: none;
+	background:url('./images/gototop_btn.png')center no-repeat;
+	 font-family: "微软雅黑",Hiragino Sans GB;
+	color:#fff;
+	margin:-200px 0px 0px 140px;
+	padding:16px 0px 0px 0px;
+	
+}
+.mid .qdz {
+	margin: 30px 0 0 0;
+	text-align: center;
+}
+.mid .but{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	margin:150px 0 0 0;
+	text-align: center;
+	display: none;
+}
+.right{
+	width:20%;
+	height: 800px;
+	float: right;
+	 
+}
+.right .qdz {
+	margin: 400px 0 0 0;
+	text-align: center;
+}
+.right .clock {
+	width: 54px;
+	height: 54px;
+	line-height: 36.5px;
+	text-align: center;
+	font-size: 17px;
+	display: none;
+	background:url('./images/gototop_btn.png')center no-repeat;
+	 font-family: "微软雅黑",Hiragino Sans GB;
+	color:#fff;
+	margin:0px 115px 0px 0px ;
+	padding:16px 0px 0px 0px;
+	
+}
+.right .but{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin:300px 0px 0px 0px ;
+	display: none;
+}
+.all_poker{
+	width: 125px;
+	height: 175px;
+	margin: 100px auto 0px;
+	position: relative;
+	transform-style: preserve-3d;
+
+}
+.all_poker li{
+	transform-origin:50% 80%;
+	position: absolute;
+}
+.temp_poker{
+	width: 125px;
+	height: 175px;
+	margin: 65px auto 0px;
+	position: relative;
+}
+.back {
+	width:125px;
+	height: 175px;
+	background: url('./images/14.png') -87px -225px;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1);
+	position: absolute;
+	z-index: 100;
+}
+.play_1{
+	width:125px;
+	height: 175px;
+	margin: 20px auto 0px;
+	position: relative;
+}
+.play_1 li{
+	position: absolute;
+}
+.play_2{
+	width:125px;
+	height: 175px;
+	margin: -40px auto 0px auto;
+	position: relative;
+}
+.play_2 li{
+	position: absolute;
+}
+.play_3{
+	width:125px;
+	height: 175px;
+	margin: 20px auto 0px;
+	position: relative;
+}
+.play_3 li{
+	position: absolute;
+}
+.qdz {
+	display: none;
+}
+.qdz .anniu{
+	color: #faddde;
+	border: solid 1px #980c10;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top, #ed1c24, #aa1317);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317'); 
+}
+.qdz .anniu:hover{
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top, #c9151b, #a11115);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115'); 
+}
+.qdz .anniu:active{
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top, #aa1317, #ed1c24);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24'); 
+}
+.left .select{
+	top:20px;
+}
+
+.right .select{
+	top:-20px;
+}
+
+.mid_end .select{
+	top:-20px;
+}
+.now_poker{
+	width: 125px;
+	height: 175px;
+	margin: 20px auto;
+	position: relative;
+}
+.now_poker li{
+	position: absolute;
+}
+
+.mingchen{
+	width: 124px;
+	height: 47px;
+	margin:15px 0 0 5px;
+	padding:8px 0 0 0;
+	display: none;
+}
+.play{
+	color: #faddde;
+	border: solid 1px #980c10;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top, #ed1c24, #aa1317);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317'); 
+}
+.play:hover{
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top, #c9151b, #a11115);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115'); 
+}
+.play:active{
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top, #aa1317, #ed1c24);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24'); 
+}
+.pass{
+	color: #faddde;
+	border: solid 1px #980c10;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top, #ed1c24, #aa1317);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317'); 
+}
+.pass:hover{
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top, #c9151b, #a11115);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115'); 
+}
+.pass:active{
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top, #aa1317, #ed1c24);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24'); 
+} 
+#xipai{
+	width:124px;
+	height:47px;
+	position: absolute;
+	left: 47%;
+	top: 62%;
+	z-index: 10000;
+	border:none;
+
+	display: block;
+	background-image: url(./images/xipai.png);
+	z-index: 10000;
+}
+#fapai{
+	width:124px;
+	height:47px;
+	position: absolute;
+	left: 47%;
+	top: 62%;
+	z-index: 10000;
+	border:none;
+	background-image: url(./images/fapai.png);
+	display: none;
+	z-index: 10000;
+}
+</style>
+<script type="text/javascript" src="./js/index.js"></script>
+</head>
+
+<body style="background:url(./images/543.png) -170px no-repeat;overflow:hidden;">
+<div class="left">
+	<div class="mingchen">
+		<img src="./images/nongm.png">
+	</div>
+	<ul class="play_1">
+	</ul>
+	<div class="qdz">
+		<input class="anniu" type="button" value="抢地主" data-value='1'>
+		<input class="anniu" type="button" value="不抢" data-value='0'>
+	</div>
+	<div class="clock">
+			30
+	</div>
+	<div class="but">
+		<input class="play" type="button" value="出牌">
+		<input class="pass" type="button" value="过牌">
+	</div>
+	<div id="panduan" value="2">	
+	</div>	
+</div>
+<div class="mid">
+	<div class="mid_top">
+		<ul class="all_poker">
+		</ul>
+		<div class="zz">
+		<ul class="now_poker">
+			
+		</ul>
+		</div>
+		<img src="">
+	</div>
+	<div class="mid_end">
+	             <input type="button"  id="xipai" />
+		<input type="button"  id="fapai" />
+		<div class="mingchen">
+			<img src="./images/nongm.png">
+		</div>
+		<ul class="play_2">
+		</ul>
+		<div class="qdz">
+			<input class="anniu" type="button" value="抢地主" data-value='2'>
+			<input class="anniu" type="button" value="不抢" data-value='0'>
+		</div>
+		<div class="clock">
+			30
+		</div>	
+		<div class="but">
+			<input class="play" type="button" value="出牌">
+			<input class="pass" type="button" value="过牌">
+		</div>
+		<div id="panduan" value="2">	
+		</div>
+	</div>
+	
+</div>
+<div class="right">
+	<div class="mingchen">
+			<img src="./images/nongm.png">
+	</div>
+	<ul class="play_3">
+	</ul>
+	<div class="qdz">
+		<input  class="anniu" type="button" value="抢地主" data-value='3'>
+		<input class="anniu" type="button" value="不抢" data-value='0'>
+	</div>
+	<div class="clock">
+			30
+	</div>
+	<div class="but">
+		<input class="play" type="button" value="出牌">
+		<input class="pass" type="button" value="过牌">
+	</div>	
+	<div id="panduan" value="2">	
+	</div>
+</div>
+<audio id="ttomusic" autoplay>
+<audio id="ximusic" autoplay>
+
+<audio id="music" autoplay loop="loop" >
+<audio id="tomusic" autoplay>
+</body>
+</html>
